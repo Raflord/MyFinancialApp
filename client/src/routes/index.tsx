@@ -29,7 +29,7 @@ function Index() {
   return (
     <div className="max-w-xl mx-auto flex flex-col gap-6 items-center justify-center min-h-screen">
       <ModeToggle />
-      <h1 className="text-5xl font-black">elysia-monorepo</h1>
+      <h1 className="text-5xl font-black">MyFinancialApp</h1>
       <h2 className="text-2xl font-bold">
         Bun + Elysia + Drizzle + better-auth + React
       </h2>
@@ -38,7 +38,7 @@ function Index() {
         <Button onClick={() => sendRequest()}>Call API</Button>
       </div>
       {data && (
-        <pre className="bg-gray-100 p-4 rounded-md">
+        <pre className="bg-card p-4 rounded-md">
           <code>
             Message: {data.message} <br />
             Success: {data.success.toString()}
@@ -48,5 +48,3 @@ function Index() {
     </div>
   );
 }
-
-export default Index;
