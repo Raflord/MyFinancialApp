@@ -1,12 +1,13 @@
 import { cors } from "@elysiajs/cors";
 import { openapi } from "@elysiajs/openapi";
+import { env } from "@server/env";
 import { Elysia } from "elysia";
 import { betterAuthPlugin, OpenAPI } from "./plugins/better-auth";
 
 const app = new Elysia()
   .use(
     cors({
-      origin: "http://localhost:5173",
+      origin: env.CLIENT_URL,
       methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
       credentials: true,
       allowedHeaders: ["Content-Type", "Authorization"],
