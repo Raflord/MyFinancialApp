@@ -45,6 +45,7 @@
   "dependencies": {
     "@tanstack/react-form": "^1.29.0",
     "better-auth": "^1.6.2",
-    "elysia": "^1.4.25"
+    "elysia": "^1.4.25",
+    "motion": "^12.38.0"
   }
 }
