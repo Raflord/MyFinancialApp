@@ -1,6 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ModeToggle } from "@/components/mode-toggle";
-import { Navbar } from "@/components/navbar";
 import { SigninForm } from "@/components/sign-in";
 
 export const Route = createFileRoute("/sign-in")({
@@ -10,8 +8,6 @@ export const Route = createFileRoute("/sign-in")({
 function SignIn() {
   return (
     <div className="max-w-xl mx-auto flex flex-col gap-6 items-center justify-center min-h-screen">
-      <Navbar />
-      <ModeToggle />
       <SigninForm />
     </div>
   );
