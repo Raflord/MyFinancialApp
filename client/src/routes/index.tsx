@@ -53,11 +53,11 @@ export function Index() {
             className="mb-12 flex flex-wrap justify-center gap-4"
           >
             <Button size="lg" variant="outline" className="gap-2">
+              <a href="/sign-in">Login</a>
               <LogIn className="h-4 w-4" />
-              Login
             </Button>
             <Button size="lg" className="gap-2">
-              Sign Up
+              <a href="/sign-up">Sign Up</a>
               <ArrowRight className="h-4 w-4" />
             </Button>
           </motion.div>
