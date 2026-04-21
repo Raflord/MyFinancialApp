@@ -3,7 +3,7 @@ import type { App } from "@server";
 import { useMutation } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ModeToggle } from "@/components/mode-toggle";
+import { Navbar } from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
@@ -27,8 +27,8 @@ function Index() {
   });
 
   return (
-    <div className="max-w-xl mx-auto flex flex-col gap-6 items-center justify-center min-h-screen">
-      <ModeToggle />
+    <div className="max-w-7xl mx-auto flex flex-col min-h-screen">
+      <Navbar />
       <h1 className="text-5xl font-black">MyFinancialApp</h1>
       <h2 className="text-2xl font-bold">
         Bun + Elysia + Drizzle + better-auth + React
