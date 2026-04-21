@@ -1,4 +1,5 @@
 import { useForm } from "@tanstack/react-form";
+import { ChartNoAxesCombined } from "lucide-react";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import {
@@ -51,6 +52,14 @@ export function SignupForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader className="text-center">
+          <CardTitle className="flex justify-center mb-6">
+            <a href="/" className="flex items-center gap-0.5">
+              <ChartNoAxesCombined className="text-muted-foreground md:w-12 md:h-12 sm:w-8 sm:h-8" />
+              <span className="text-foreground md:text-4xl sm:text-xl font-semibold tracking-tighter">
+                MyFinancialApp
+              </span>
+            </a>
+          </CardTitle>
           <CardTitle className="text-xl">Create your account</CardTitle>
           <CardDescription>
             Enter your email below to create your account
