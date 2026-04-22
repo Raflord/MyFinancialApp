@@ -1,67 +1,52 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowRight, ChartNoAxesCombined, LogIn } from "lucide-react";
-import { motion } from "motion/react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
-export function Index() {
+function Index() {
   return (
-    <section className="relative flex items-center justify-center overflow-hidden bg-background min-h-screen w-full">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[24px_24px]" />
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 py-32">
+      {/* Animated background gradient orbs */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute left-1/4 top-1/4 h-150 w-150 animate-pulse rounded-full bg-foreground/3 blur-3xl" />
+        <div
+          className="absolute bottom-1/4 right-1/4 h-150 w-150 animate-pulse rounded-full bg-foreground/3 blur-3xl"
+          style={{ animationDelay: "1s" }}
+        />
+      </div>
 
-      <div className="relative z-10 mx-auto max-w-5xl text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="mb-6 inline-block"
-          >
-            <div className="mx-auto h-24 w-24 rounded-full border-4 border-background bg-linear-to-br from-primary to-muted shadow-lg" />
-          </motion.div>
+      <div className="mx-auto max-w-7xl space-y-10 text-center">
+        <div className="inline-flex items-center gap-2 rounded-full border border-border/50 bg-background/50 px-4 py-1.5 text-sm font-medium text-foreground/70 backdrop-blur-xl transition-all duration-300 hover:border-border">
+          <Sparkles className="h-3.5 w-3.5" />
+          <span>Welcome to MyFinancialApp</span>
+        </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="mb-6 text-4xl font-bold flex justify-center items-center gap-0.5 text-foreground md:text-7xl"
-          >
-            <ChartNoAxesCombined className="md:w-20 md:h-20 w-14 h-14 text-muted-foreground" />
-            <span className="tracking-tighter">MyFinancialApp</span>
-          </motion.h1>
+        <h1 className="text-6xl font-bold leading-[0.9] tracking-tight md:text-8xl lg:text-9xl">
+          <span className="block">Master your</span>
+          <span className="mt-4 block">finances</span>
+        </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="mx-auto mb-8 max-w-3xl text-xl text-muted-foreground md:text-2xl"
-          >
-            Take control of your money with MyFinancialApp.
-          </motion.p>
+        <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+          The all-in-one money management platform. Track your expenses, set
+          smart budgets, and achieve your financial goals with total clarity.
+        </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="mb-12 flex flex-wrap justify-center gap-4"
+        <div className="flex flex-col justify-center gap-4 pt-8 sm:flex-row">
+          <Button size="lg" className="group h-12 rounded-full px-8 text-base">
+            <a href="/sing-in">Start Saving Today</a>
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            className="h-12 rounded-full px-8 text-base hover:bg-foreground/5"
           >
-            <Button size="lg" variant="outline" className="gap-2">
-              <a href="/sign-in">Login</a>
-              <LogIn className="h-4 w-4" />
-            </Button>
-            <Button size="lg" className="gap-2">
-              <a href="/sign-up">Sign Up</a>
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-          </motion.div>
-        </motion.div>
+            <a href="/sign-up">Create an Account</a>
+          </Button>
+        </div>
       </div>
     </section>
   );
