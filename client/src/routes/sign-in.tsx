@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SigninForm } from "@/components/sign-in";
+import { GlassSignInCard } from "@/components/GlassSignInCard";
 
 export const Route = createFileRoute("/sign-in")({
   component: SignIn,
@@ -7,8 +7,8 @@ export const Route = createFileRoute("/sign-in")({
 
 function SignIn() {
   return (
-    <div className="max-w-xl mx-auto flex flex-col gap-6 items-center justify-center min-h-screen">
-      <SigninForm />
+    <div className="mx-auto flex min-h-screen max-w-xl flex-col items-center justify-center gap-6">
+      <GlassSignInCard />
     </div>
   );
 }

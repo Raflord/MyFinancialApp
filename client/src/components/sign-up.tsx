@@ -52,10 +52,10 @@ export function SignupForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="flex justify-center mb-6">
+          <CardTitle className="mb-6 flex justify-center">
             <a href="/" className="flex items-center gap-0.5">
-              <ChartNoAxesCombined className="text-muted-foreground md:w-12 md:h-12 sm:w-8 sm:h-8" />
-              <span className="text-foreground md:text-4xl sm:text-xl font-semibold tracking-tighter">
+              <ChartNoAxesCombined className="text-muted-foreground sm:h-8 sm:w-8 md:h-12 md:w-12" />
+              <span className="font-semibold text-foreground tracking-tighter sm:text-xl md:text-4xl">
                 MyFinancialApp
               </span>
             </a>

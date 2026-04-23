@@ -11,25 +11,25 @@ function Index() {
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 py-32">
       {/* Animated background gradient orbs */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute left-1/4 top-1/4 h-150 w-150 animate-pulse rounded-full bg-foreground/3 blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 h-150 w-150 animate-pulse rounded-full bg-foreground/3 blur-3xl" />
         <div
-          className="absolute bottom-1/4 right-1/4 h-150 w-150 animate-pulse rounded-full bg-foreground/3 blur-3xl"
+          className="absolute right-1/4 bottom-1/4 h-150 w-150 animate-pulse rounded-full bg-foreground/3 blur-3xl"
           style={{ animationDelay: "1s" }}
         />
       </div>
 
       <div className="mx-auto max-w-7xl space-y-10 text-center">
-        <div className="inline-flex items-center gap-2 rounded-full border border-border/50 bg-background/50 px-4 py-1.5 text-sm font-medium text-foreground/70 backdrop-blur-xl transition-all duration-300 hover:border-border">
+        <div className="inline-flex items-center gap-2 rounded-full border border-border/50 bg-background/50 px-4 py-1.5 font-medium text-foreground/70 text-sm backdrop-blur-xl transition-all duration-300 hover:border-border">
           <Sparkles className="h-3.5 w-3.5" />
           <span>Welcome to MyFinancialApp</span>
         </div>
 
-        <h1 className="text-6xl font-bold leading-[0.9] tracking-tight md:text-8xl lg:text-9xl">
+        <h1 className="font-bold text-6xl leading-[0.9] tracking-tight md:text-8xl lg:text-9xl">
           <span className="block">Master your</span>
           <span className="mt-4 block">finances</span>
         </h1>
 
-        <p className="mx-auto max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+        <p className="mx-auto max-w-2xl text-lg text-muted-foreground leading-relaxed md:text-xl">
           The all-in-one money management platform. Track your expenses, set
           smart budgets, and achieve your financial goals with total clarity.
         </p>
