@@ -36,7 +36,7 @@ function Index() {
 
         <div className="flex flex-col justify-center gap-4 pt-8 sm:flex-row">
           <Button size="lg" className="group h-12 rounded-full px-8 text-base">
-            <a href="/sing-in">Start Saving Today</a>
+            <a href="/sign-in">Start Saving Today</a>
             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
           <Button
