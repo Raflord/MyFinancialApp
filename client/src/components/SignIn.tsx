@@ -144,14 +144,14 @@ export function SignInForm({ className }: React.ComponentProps<"div">) {
             }}
           />
 
-          <div className="flex items-center justify-end text-muted-foreground text-sm">
+          {/*<div className="flex items-center justify-end text-muted-foreground text-sm">
             <button
               type="button"
               className="font-medium text-primary text-xs underline-offset-4 hover:cursor-pointer hover:underline"
             >
               Forgot password?
             </button>
-          </div>
+          </div>*/}
 
           <Field>
             <Button
