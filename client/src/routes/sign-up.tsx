@@ -5,7 +5,7 @@ import { authClient } from "@/lib/auth";
 export const Route = createFileRoute("/sign-up")({
   beforeLoad: async ({ location }) => {
     const session = await authClient.getSession();
-    if (session) {
+    if (session.data?.user) {
       throw redirect({
         to: "/dashboard",
         search: { redirect: location.href },
