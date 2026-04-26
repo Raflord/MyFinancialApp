@@ -20,7 +20,7 @@ export const auth = betterAuth({
   trustedOrigins: [env.CLIENT_URL],
   emailAndPassword: {
     enabled: true,
-    autoSignIn: true,
+    autoSignIn: false,
     password: {
       hash: (password: string) => Bun.password.hash(password),
       verify: ({ password, hash }) => Bun.password.verify(password, hash),
