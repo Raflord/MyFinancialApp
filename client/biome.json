@@ -17,10 +17,14 @@
   },
   "linter": {
     "enabled": true,
+    "includes": ["**", "!**/ui/**"],
     "rules": {
       "recommended": true,
       "nursery": {
         "useSortedClasses": { "level": "error", "fix": "safe" }
+      },
+      "correctness": {
+        "noChildrenProp": "warn"
       }
     }
   },
