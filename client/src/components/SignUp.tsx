@@ -1,4 +1,5 @@
 import { useForm } from "@tanstack/react-form";
+import type { BetterFetchError } from "better-auth/react";
 import { motion } from "motion/react";
 import { useState } from "react";
 import * as z from "zod";
@@ -12,17 +13,38 @@ import {
   FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { env } from "@/env";
 import { authClient } from "@/lib/auth";
 import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   name: z.string().min(3).max(100),
   email: z.email().max(100),
-  password: z.string().min(8).max(50),
+  password: z
+    .string()
+    .min(8, {
+      message: "Password must be at least 8 characters long",
+    })
+    .max(50, {
+      message: "Password must be less than 50 characters",
+    })
+    .regex(/[a-z]/, {
+      message: "Password must contain at least one lowercase letter",
+    })
+    .regex(/[A-Z]/, {
+      message: "Password must contain at least one uppercase letter",
+    })
+    .regex(/\d/, {
+      message: "Password must contain at least one number",
+    })
+    .regex(/[^a-zA-Z0-9]/, {
+      message: "Password must contain at least one special character",
+    }),
 });
 
 export function SignUpForm({ className }: React.ComponentProps<"div">) {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [formError, setFormError] = useState<BetterFetchError>();
 
   const form = useForm({
     defaultValues: {
@@ -38,7 +60,12 @@ export function SignUpForm({ className }: React.ComponentProps<"div">) {
         name: value.name,
         email: value.email,
         password: value.password,
-        callbackURL: "http://localhost:5173",
+        callbackURL: `${env.VITE_BASE_URL}/dashboard`,
+        fetchOptions: {
+          onError(ctx) {
+            setFormError(ctx.error);
+          },
+        },
       });
     },
   });
@@ -151,10 +178,27 @@ export function SignUpForm({ className }: React.ComponentProps<"div">) {
             validators={{
               onBlur: z
                 .string()
-                .regex(
-                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                  "Password must be at least 8 characters long with, one uppercase, one lowercase, one number, and one special character.",
-                ),
+                .min(8, {
+                  message: "Password must be at least 8 characters long",
+                })
+                .max(50, {
+                  message: "Password must be less than 50 characters",
+                })
+                .regex(/[a-z]/, {
+                  message:
+                    "Password must contain at least one lowercase letter",
+                })
+                .regex(/[A-Z]/, {
+                  message:
+                    "Password must contain at least one uppercase letter",
+                })
+                .regex(/\d/, {
+                  message: "Password must contain at least one number",
+                })
+                .regex(/[^a-zA-Z0-9]/, {
+                  message:
+                    "Password must contain at least one special character",
+                }),
             }}
             children={(field) => {
               const isInvalid =
@@ -208,6 +252,10 @@ export function SignUpForm({ className }: React.ComponentProps<"div">) {
               </span>
             </label>
           </div>
+
+          {formError && (
+            <p className="text-center text-destructive">{formError.message}</p>
+          )}
 
           <Field>
             <Button
