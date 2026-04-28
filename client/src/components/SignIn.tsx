@@ -1,5 +1,7 @@
 import { useForm } from "@tanstack/react-form";
+import { useNavigate } from "@tanstack/react-router";
 import type { BetterFetchError } from "better-auth/react";
+import { time } from "console";
 import { motion } from "motion/react";
 import { useState } from "react";
 import * as z from "zod";
@@ -42,6 +44,8 @@ const formSchema = z.object({
 
 export function SignInForm({ className }: React.ComponentProps<"div">) {
   const [formError, setFormError] = useState<BetterFetchError>();
+  const [isFetching, setIsFetching] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const form = useForm({
     defaultValues: {
@@ -52,13 +56,19 @@ export function SignInForm({ className }: React.ComponentProps<"div">) {
       onSubmit: formSchema,
     },
     onSubmit: async ({ value }) => {
+      setIsFetching(true);
       await authClient.signIn.email({
         email: value.email,
         password: value.password,
-        callbackURL: `${env.VITE_BASE_URL}/dashboard`,
         fetchOptions: {
           onError(ctx) {
             setFormError(ctx.error);
+            setTimeout(() => {
+              setIsFetching(false);
+            }, 1000);
+          },
+          onSuccess() {
+            navigate({ to: "/dashboard" });
           },
         },
       });
@@ -203,6 +213,7 @@ export function SignInForm({ className }: React.ComponentProps<"div">) {
 
           <Field>
             <Button
+              disabled={isFetching}
               type="submit"
               variant="default"
               className="w-full rounded-full bg-primary px-6 py-3 text-primary-foreground shadow-[0_20px_60px_-30px_rgba(79,70,229,0.75)] transition-transform duration-300 hover:-translate-y-1"

@@ -1,4 +1,10 @@
 import { useForm } from "@tanstack/react-form";
+import {
+  createRoute,
+  RouteApi,
+  redirect,
+  useNavigate,
+} from "@tanstack/react-router";
 import type { BetterFetchError } from "better-auth/react";
 import { motion } from "motion/react";
 import { useState } from "react";
@@ -45,6 +51,8 @@ const formSchema = z.object({
 export function SignUpForm({ className }: React.ComponentProps<"div">) {
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [formError, setFormError] = useState<BetterFetchError>();
+  const [isFetching, setIsFetching] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const form = useForm({
     defaultValues: {
@@ -60,10 +68,15 @@ export function SignUpForm({ className }: React.ComponentProps<"div">) {
         name: value.name,
         email: value.email,
         password: value.password,
-        callbackURL: `${env.VITE_BASE_URL}/dashboard`,
         fetchOptions: {
           onError(ctx) {
             setFormError(ctx.error);
+            setTimeout(() => {
+              setIsFetching(false);
+            }, 1000);
+          },
+          onSuccess() {
+            navigate({ to: "/dashboard" });
           },
         },
       });
@@ -260,7 +273,7 @@ export function SignUpForm({ className }: React.ComponentProps<"div">) {
           <Field>
             <Button
               type="submit"
-              disabled={!acceptedTerms}
+              disabled={!acceptedTerms || isFetching}
               className="w-full rounded-full bg-primary px-6 py-3 text-primary-foreground shadow-[0_20px_60px_-30px_rgba(79,70,229,0.75)] transition-transform duration-300 hover:-translate-y-1 disabled:cursor-not-allowed disabled:opacity-60"
             >
               Create account
