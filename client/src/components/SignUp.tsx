@@ -1,10 +1,5 @@
 import { useForm } from "@tanstack/react-form";
-import {
-  createRoute,
-  RouteApi,
-  redirect,
-  useNavigate,
-} from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 import type { BetterFetchError } from "better-auth/react";
 import { motion } from "motion/react";
 import { useState } from "react";
@@ -19,7 +14,6 @@ import {
   FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { env } from "@/env";
 import { authClient } from "@/lib/auth";
 import { cn } from "@/lib/utils";
 

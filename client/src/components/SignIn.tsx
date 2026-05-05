@@ -1,7 +1,6 @@
 import { useForm } from "@tanstack/react-form";
 import { useNavigate } from "@tanstack/react-router";
 import type { BetterFetchError } from "better-auth/react";
-import { time } from "console";
 import { motion } from "motion/react";
 import { useState } from "react";
 import * as z from "zod";
@@ -14,7 +13,6 @@ import {
   FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { env } from "@/env";
 import { authClient } from "@/lib/auth";
 import { cn } from "@/lib/utils";
 
