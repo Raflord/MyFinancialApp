@@ -1,6 +1,7 @@
 import {
   IconDotsVertical,
   IconLogout,
+  IconSettings,
   IconUserCircle,
 } from "@tabler/icons-react";
 import { useNavigate } from "@tanstack/react-router";
@@ -89,6 +90,10 @@ export function NavUser({
               <DropdownMenuItem>
                 <IconUserCircle />
                 Account
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <IconSettings />
+                Settings
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />

@@ -1,15 +1,9 @@
 import {
-  IconCamera,
-  IconChartBar,
-  IconDashboard,
-  IconDatabase,
-  IconFileAi,
-  IconFileDescription,
-  IconFileWord,
-  IconFolder,
-  IconListDetails,
-  IconReport,
-  IconUsers,
+  IconCalendarWeek,
+  IconCashBanknoteMinus,
+  IconCashBanknotePlus,
+  IconLayoutDashboard,
+  IconPigMoney,
 } from "@tabler/icons-react";
 import { ChartNoAxesCombined } from "lucide-react";
 import { NavMain } from "@/components/NavMain";
@@ -30,92 +24,27 @@ const data = {
     {
       title: "Dashboard",
       url: "/dashboard",
-      icon: IconDashboard,
+      icon: IconLayoutDashboard,
     },
     {
-      title: "Lifecycle",
+      title: "Income",
       url: "#",
-      icon: IconListDetails,
+      icon: IconCashBanknotePlus,
     },
     {
-      title: "Analytics",
+      title: "Expenses",
       url: "#",
-      icon: IconChartBar,
+      icon: IconCashBanknoteMinus,
     },
     {
-      title: "Projects",
+      title: "Savings",
       url: "#",
-      icon: IconFolder,
+      icon: IconPigMoney,
     },
     {
-      title: "Team",
+      title: "Planner",
       url: "#",
-      icon: IconUsers,
-    },
-  ],
-  navClouds: [
-    {
-      title: "Capture",
-      icon: IconCamera,
-      isActive: true,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Proposal",
-      icon: IconFileDescription,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Prompts",
-      icon: IconFileAi,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-  ],
-  documents: [
-    {
-      name: "Data Library",
-      url: "#",
-      icon: IconDatabase,
-    },
-    {
-      name: "Reports",
-      url: "#",
-      icon: IconReport,
-    },
-    {
-      name: "Word Assistant",
-      url: "#",
-      icon: IconFileWord,
+      icon: IconCalendarWeek,
     },
   ],
 };
